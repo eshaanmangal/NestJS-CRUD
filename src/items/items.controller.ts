@@ -20,10 +20,19 @@ export class ItemsController {
         return `Item: ${id} `;
     }
 
-    /* Method should not be used only for express not nest js style*/
-    @Get(':id')
-    updateItem(@Req() req:Request, @Res() res:Response):Response{
-        return res.send('Just Testing')
+    @Put(':id')
+    updateItem(@Param('id') id, @Body() updateItem:CreateItemDto):string{
+        return `Item with ${id} updatedf with name ${updateItem.name}`
     }
+
+    @Delete(':id')
+    deleteItem(@Param('id') id):string{
+        return `Item with ${id} deleted`;
+    }
+    /* Method should not be used only for express not nest js style*/
+    // @Get(':id')
+    // updateItem(@Req() req:Request, @Res() res:Response):Response{
+    //     return res.send('Just Testing')
+    // }
 
 }
